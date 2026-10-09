@@ -221,12 +221,43 @@ pre { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12p
 .coffee b { display: block; font: 800 clamp(22px, 3vw, 28px) "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; }
 .coffee small { color: #4a2a10; }
 .coffee i { color: #2a1606; font-size: 22px; }
-.upi { display: flex; gap: 18px; align-items: center; margin-top: 18px; }
-.upi img { width: 96px; height: 96px; border-radius: 10px; background: #fff; padding: 6px; flex: none; image-rendering: pixelated; }
-.upi img.pulse { animation: pulse 1.2s ease 2; }
-@keyframes pulse { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent); transform: scale(1.06); } }
-.upi-id { margin: 4px 0; padding: 0; border: 0; background: none; font: 600 16px Inter, sans-serif; color: var(--ink); cursor: pointer; display: inline-flex; gap: 10px; align-items: center; }
-.upi-id span { font-size: 12px; color: var(--accent); border: 1px solid var(--line); border-radius: 99px; padding: 2px 8px; }
+.coffee { width: 100%; border: 0; text-align: left; font: inherit; cursor: pointer; }
+
+/* Coffee dialog */
+.coffee-dialog { width: min(460px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 40px 32px 30px; border-radius: 28px; text-align: center;
+  background: var(--card); color: var(--ink); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,.55); overflow-y: auto; }
+.coffee-dialog::backdrop { background: rgba(10,8,5,.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.coffee-dialog[open] { animation: pop .28s cubic-bezier(.2,.9,.3,1.2); }
+@keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+.cd-close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+  background: transparent; color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+.cd-close:hover { border-color: var(--accent); }
+.cd-close svg { width: 18px; height: 18px; }
+.cd-icon { width: 76px; height: 76px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center; color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.cd-icon svg { width: 34px; height: 34px; }
+.coffee-dialog h3 { font-size: clamp(26px, 6vw, 32px); font-weight: 700; }
+.cd-sub { color: var(--ink-2); margin: 8px 0 22px; font-size: 16px; }
+.cd-qr { width: 220px; margin: 0 auto; padding: 18px; background: #fff; border-radius: 20px; }
+.cd-qr img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.cd-note { color: var(--ink-2); font-size: 14px; margin: 14px 0 0; }
+.cd-app { display: none; margin-top: 16px; justify-content: center; }
+.is-phone .cd-app { display: inline-flex; }
+.cd-label { text-align: left; font-size: 12px; font-weight: 600; letter-spacing: .14em; color: var(--ink-2); margin: 26px 0 8px; }
+.cd-field { display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
+.cd-field > span { font-size: 16px; font-weight: 500; min-width: 0; overflow-wrap: anywhere; text-align: left; user-select: all; }
+.cd-close:focus-visible, .cd-field button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 420px) {
+  .coffee-dialog { padding: 36px 20px 24px; }
+  .cd-field > span { font-size: 15px; }
+  .cd-field button { padding: 9px 11px; }
+}
+.cd-field button { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 10px; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent); font: 600 14px Inter, sans-serif; flex: none; }
+.cd-field button svg { width: 17px; height: 17px; }
+.cd-thanks { color: var(--ink-2); margin: 26px 0 0; font-size: 15px; }
 
 /* FAQ */
 details { border-bottom: 1px solid var(--line); padding: 20px 0; }
@@ -443,22 +474,38 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
         </a>
       </div>
       <p class="made">Made with <span style="color:var(--accent)">♥</span> by Lalit Patel</p>
-      <a class="coffee" href="upi://pay?pa=patellalit626@okaxis&amp;pn=Lalit%20Patel&amp;cu=INR&amp;tn=Coffee%20for%20WOW">
+      <button class="coffee" id="coffee-open" aria-haspopup="dialog">
         <span class="cup">☕</span>
         <span><b>Buy Lalit a coffee</b><small>A little appreciation, if you feel like it.</small></span>
         <i>↗</i>
-      </a>
-      <div class="upi">
-        <img src="upi-qr.png" alt="UPI QR code for patellalit626@okaxis" width="96" height="96">
-        <div>
-          <small>Scan with any UPI app, or pay to</small>
-          <button class="upi-id" id="upi-copy" title="Copy UPI ID">patellalit626@okaxis <span id="upi-copied">Copy</span></button>
-          <small>WOW is free. A coffee is always optional.</small>
-        </div>
-      </div>
+      </button>
+      <p class="made" style="margin-top:14px">WOW is free. A coffee is always optional.</p>
     </div>
   </div>
 </section>
+
+<dialog id="coffee-dialog" class="coffee-dialog" aria-labelledby="coffee-title">
+  <button class="cd-close" id="coffee-close" aria-label="Close">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <div class="cd-icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Zm11 1.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5v2.5M10.75 3.5v2.5M13.5 3.5v2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h3 id="coffee-title">☕ Buy Lalit a Coffee</h3>
+  <p class="cd-sub">Help keep WOW growing.</p>
+  <div class="cd-qr"><img src="upi-qr.png" alt="UPI QR code for patellalit626@okaxis" width="240" height="240"></div>
+  <p class="cd-note">Scan with any UPI app. Choose your own amount.</p>
+  <a class="btn primary cd-app" href="upi://pay?pa=patellalit626@okaxis&amp;pn=Lalit%20Patel&amp;cu=INR&amp;tn=Coffee%20for%20WOW">Open UPI app</a>
+  <div class="cd-label">UPI ID</div>
+  <div class="cd-field">
+    <span>patellalit626@okaxis</span>
+    <button id="upi-copy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+      <span id="upi-copied">Copy</span>
+    </button>
+  </div>
+  <p class="cd-thanks">Thank you for using WOW ❤️</p>
+</dialog>
 
 <section id="faq" class="alt">
   <div class="wrap">
@@ -637,15 +684,17 @@ const week = [["Mon", 8], ["Tue", 6], ["Wed", 9], ["Thu", 8], ["Fri", 8], ["Sat"
 document.getElementById("chart").innerHTML = week.map(([d, n]) =>
   `<div class="${n >= 8 ? "goal" : ""}"><i style="height:${n * 12}px"></i>${d}</div>`).join("");
 
-// UPI links only open an app on phones; on a computer, point at the QR instead.
-document.querySelector(".coffee").addEventListener("click", e => {
-  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) return;
-  e.preventDefault();
-  const qr = document.querySelector(".upi img");
-  qr.classList.remove("pulse"); void qr.offsetWidth; qr.classList.add("pulse");
+// Coffee popup. Phones also get an "Open UPI app" button, since upi:// links do nothing on a computer.
+const coffee = document.getElementById("coffee-dialog");
+if (/Android|iPhone|iPad/i.test(navigator.userAgent)) coffee.classList.add("is-phone");
+document.getElementById("coffee-open").addEventListener("click", () => coffee.showModal());
+document.getElementById("coffee-close").addEventListener("click", () => coffee.close());
+// Close on a backdrop click (the dialog's own padding also targets it, so check the bounds).
+coffee.addEventListener("click", e => {
+  const r = coffee.getBoundingClientRect();
+  if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) coffee.close();
 });
 
-// Copy UPI ID
 document.getElementById("upi-copy").addEventListener("click", async () => {
   const label = document.getElementById("upi-copied");
   try { await navigator.clipboard.writeText("patellalit626@okaxis"); label.textContent = "Copied"; }
