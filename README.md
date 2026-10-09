@@ -21,4 +21,4 @@ xattr -dr com.apple.quarantine /Applications/WOW.app
 
 Found a bug or have an idea? [Open an issue](https://github.com/lalitpatel11/WOW-site/issues).
 
-3D pets by Quaternius (CC0).
+3D pets by Quaternius (CC0). Kitty: ["Cute Little Kitty"](https://sketchfab.com/3d-models/4f9683c841424010aaeb36b069025667) by Diskette96, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
