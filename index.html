@@ -13,30 +13,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #fbf6ee;
-  --bg-2: #f3eadb;
+  --bg: #f6f7fc;
+  --bg-2: #eceefa;
   --card: #ffffff;
-  --ink: #1d1a16;
-  --ink-2: #5e564c;
-  --line: #e6dccb;
-  --accent: #e8792b;
+  --ink: #161827;
+  --ink-2: #565b73;
+  --line: #dfe2f0;
+  --accent: #5b5ff0;
   --accent-ink: #ffffff;
-  --sky: #cfe6f7;
-  --sky-2: #eaf4fb;
+  --sun: #ffc94d;
+  --sky: #d6e4ff;
+  --sky-2: #eef2ff;
   --menubar: rgba(255,255,255,.72);
-  --shadow: 0 1px 2px rgba(40,30,15,.06), 0 12px 32px rgba(40,30,15,.08);
+  --shadow: 0 1px 2px rgba(20,24,60,.06), 0 12px 32px rgba(20,24,60,.08);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #15130f; --bg-2: #1e1b16; --card: #24211b; --ink: #f4ede2; --ink-2: #b3a99a;
-    --line: #36312a; --accent: #f08a3e; --accent-ink: #1a1208; --sky: #1f3446; --sky-2: #182630;
-    --menubar: rgba(30,28,24,.75); --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+    --bg: #10121b; --bg-2: #161926; --card: #1c2030; --ink: #eef0fa; --ink-2: #a3a8bf;
+    --line: #2a2f44; --accent: #8f95ff; --accent-ink: #0f1020; --sky: #1d2748; --sky-2: #151b30;
+    --menubar: rgba(24,27,40,.75); --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
   }
 }
 :root[data-theme="dark"] {
-  --bg: #15130f; --bg-2: #1e1b16; --card: #24211b; --ink: #f4ede2; --ink-2: #b3a99a;
-  --line: #36312a; --accent: #f08a3e; --accent-ink: #1a1208; --sky: #1f3446; --sky-2: #182630;
-  --menubar: rgba(30,28,24,.75); --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+  --bg: #10121b; --bg-2: #161926; --card: #1c2030; --ink: #eef0fa; --ink-2: #a3a8bf;
+  --line: #2a2f44; --accent: #8f95ff; --accent-ink: #0f1020; --sky: #1d2748; --sky-2: #151b30;
+  --menubar: rgba(24,27,40,.75); --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -48,7 +49,7 @@ body {
 h1, h2, h3 { font-family: "Bricolage Grotesque", Inter, sans-serif; line-height: 1.05; margin: 0; letter-spacing: -.02em; }
 a { color: inherit; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.eyebrow { display: inline-block; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 99px; color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); }
 .num { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--ink-2); font-size: 14px; }
 .btn {
   display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px;
@@ -164,7 +165,7 @@ section { padding: 96px 0; }
 /* Water chart */
 .chart { display: flex; align-items: flex-end; gap: 10px; height: 160px; padding: 18px 18px 0; }
 .chart div { flex: 1; text-align: center; font-size: 12px; color: var(--ink-2); }
-.chart i { display: block; border-radius: 8px 8px 4px 4px; background: #6aa8ef; margin-bottom: 6px; }
+.chart i { display: block; border-radius: 8px 8px 4px 4px; background: color-mix(in srgb, var(--accent) 35%, transparent); margin-bottom: 6px; }
 .chart .goal i { background: var(--accent); }
 .streak { display: flex; justify-content: space-between; padding: 16px 18px; border-top: 1px solid var(--line); margin-top: 16px; font-size: 14px; color: var(--ink-2); }
 .streak b { color: var(--ink); }
@@ -172,6 +173,7 @@ section { padding: 96px 0; }
 /* Why */
 .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .why h3 { font-size: 24px; margin: 8px 0; }
+.why-ico { font-size: 30px; }
 .why p { color: var(--ink-2); margin: 0; }
 @media (max-width: 760px) { .why { grid-template-columns: 1fr; } }
 .alt { background: var(--bg-2); }
@@ -192,15 +194,14 @@ pre { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12p
 .pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); margin-bottom: 8px; }
 
 /* Maker */
-.maker { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 72px; align-items: center; }
+.maker { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 72px; align-items: center; }
 @media (max-width: 860px) { .maker { grid-template-columns: 1fr; gap: 40px; } }
-.portrait { position: relative; margin: 0; border-radius: 20px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
-  box-shadow: 0 30px 80px -20px color-mix(in srgb, var(--accent) 30%, transparent), var(--shadow); aspect-ratio: 4 / 5; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.portrait figcaption { position: absolute; left: 20px; bottom: 20px; padding: 8px 14px; border-left: 2px solid var(--accent);
-  background: rgba(15,12,8,.6); backdrop-filter: blur(8px); color: #f4ede2; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-.eyebrow.line { display: flex; align-items: center; gap: 12px; }
-.eyebrow.line::before { content: ""; width: 28px; height: 1.5px; background: var(--accent); }
+.portrait { width: 100%; max-width: 420px; justify-self: center; margin: 0; padding: 14px 14px 0; background: #fff; border-radius: 6px; transform: rotate(2.2deg);
+  box-shadow: 0 30px 70px -24px rgba(20,24,60,.45), var(--shadow); transition: transform .3s ease; }
+.portrait:hover { transform: rotate(0deg) scale(1.01); }
+.portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 2px; }
+.portrait figcaption { padding: 14px 4px 16px; text-align: center; color: #3a3d52; font-size: 15px; font-weight: 500; }
+@media (max-width: 860px) { .portrait { order: -1; max-width: 340px; } }
 .maker-h { font-size: clamp(36px, 5vw, 60px); font-weight: 800; margin: 16px 0 22px; }
 .byline { display: inline-flex; gap: 10px; font-size: 19px; text-decoration: none; font-weight: 500; }
 .byline span { color: var(--accent); }
@@ -215,12 +216,12 @@ pre { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12p
 .social i, .coffee i { margin-left: auto; font-style: normal; color: var(--ink-2); }
 .made { color: var(--ink-2); margin: 24px 0 14px; }
 .coffee { display: flex; align-items: center; gap: 18px; padding: 22px 26px; border-radius: 18px; text-decoration: none;
-  background: linear-gradient(100deg, #ec7f33, #f5b06e); color: #2a1606; box-shadow: 0 16px 40px -14px rgba(232,121,43,.6); transition: transform .15s; }
+  background: linear-gradient(100deg, #ffc94d, #ffe08a); color: #2b2100; box-shadow: 0 16px 40px -14px rgba(255,185,40,.55); transition: transform .15s; }
 .coffee:hover { transform: translateY(-2px); }
 .coffee .cup { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; background: rgba(255,255,255,.28); flex: none; }
 .coffee b { display: block; font: 800 clamp(22px, 3vw, 28px) "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; }
-.coffee small { color: #4a2a10; }
-.coffee i { color: #2a1606; font-size: 22px; }
+.coffee small { color: #5a4710; }
+.coffee i { color: #2b2100; font-size: 22px; }
 .coffee { width: 100%; border: 0; text-align: left; font: inherit; cursor: pointer; }
 
 /* Coffee dialog */
@@ -411,9 +412,9 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
       <h2>Built to be kind to you and your Mac.</h2>
     </div>
     <div class="why">
-      <div><span class="num">01</span><h3>Native and light</h3><p>Written in Swift for macOS. The pet sleeps when you pause it, so it barely touches your battery.</p></div>
-      <div><span class="num">02</span><h3>Private</h3><p>No account, no analytics, no internet needed. Your reminders and stats stay on your Mac.</p></div>
-      <div><span class="num">03</span><h3>Free</h3><p>No subscription, no ads, no "pro" version. Just download and use it.</p></div>
+      <div><span class="why-ico">⚡</span><h3>Native and light</h3><p>Written in Swift for macOS. The pet sleeps when you pause it, so it barely touches your battery.</p></div>
+      <div><span class="why-ico">🔒</span><h3>Private</h3><p>No account, no analytics, no internet needed. Your reminders and stats stay on your Mac.</p></div>
+      <div><span class="why-ico">🎁</span><h3>Free</h3><p>No subscription, no ads, no "pro" version. Just download and use it.</p></div>
     </div>
   </div>
 </section>
@@ -453,16 +454,12 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
 
 <section id="maker">
   <div class="wrap maker">
-    <figure class="portrait">
-      <img src="lalit.jpg" alt="Lalit Patel sitting on a log on a mountain trail" loading="lazy" width="1000" height="1250">
-      <figcaption>The human behind the pet.</figcaption>
-    </figure>
     <div>
-      <div class="eyebrow line">Built independently. In India.</div>
-      <h2 class="maker-h">What if a reminder felt like a friend?</h2>
+      <div class="eyebrow">🇮🇳 A one-person project</div>
+      <h2 class="maker-h">I wanted reminders I wouldn't ignore.</h2>
       <a class="byline" href="https://github.com/lalitpatel11">Built by Lalit Patel <span>↗</span></a>
       <p class="story">I kept ignoring the little pop-ups telling me to drink water and take breaks. So I made one that walks over and waits for me, and it turns out that's much harder to ignore.</p>
-      <p class="story">Built independently. Free for everyone. Updated whenever there's something fun to add.</p>
+      <p class="story">WOW is free, has no ads, and gets a new pet or feature whenever I find one worth adding. Got an idea? Tell me.</p>
       <div class="socials">
         <a class="social" href="https://github.com/lalitpatel11">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
@@ -473,14 +470,17 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
           <span><b>Say hello</b><small>Ideas, bugs, pet requests</small></span><i>↗</i>
         </a>
       </div>
-      <p class="made">Made with <span style="color:var(--accent)">♥</span> by Lalit Patel</p>
       <button class="coffee" id="coffee-open" aria-haspopup="dialog">
         <span class="cup">☕</span>
-        <span><b>Buy Lalit a coffee</b><small>A little appreciation, if you feel like it.</small></span>
+        <span><b>Buy Lalit a chai</b><small>Enjoying WOW? A chai keeps the pets fed.</small></span>
         <i>↗</i>
       </button>
-      <p class="made" style="margin-top:14px">WOW is free. A coffee is always optional.</p>
+      <p class="made" style="margin-top:14px">WOW stays free either way.</p>
     </div>
+    <figure class="portrait">
+      <img src="lalit.jpg" alt="Lalit Patel sitting on a log on a mountain trail" loading="lazy" width="1000" height="1250">
+      <figcaption>Taking a break, like WOW keeps telling me to 🏔️</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -491,10 +491,10 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
   <div class="cd-icon">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Zm11 1.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5v2.5M10.75 3.5v2.5M13.5 3.5v2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
-  <h3 id="coffee-title">☕ Buy Lalit a Coffee</h3>
-  <p class="cd-sub">Help keep WOW growing.</p>
+  <h3 id="coffee-title">Buy Lalit a chai</h3>
+  <p class="cd-sub">Any amount is a big thank-you.</p>
   <div class="cd-qr"><img src="upi-qr.png" alt="UPI QR code for patellalit626@okaxis" width="240" height="240"></div>
-  <p class="cd-note">Scan with any UPI app. Choose your own amount.</p>
+  <p class="cd-note">Scan with GPay, PhonePe, Paytm or any UPI app.</p>
   <a class="btn primary cd-app" href="upi://pay?pa=patellalit626@okaxis&amp;pn=Lalit%20Patel&amp;cu=INR&amp;tn=Coffee%20for%20WOW">Open UPI app</a>
   <div class="cd-label">UPI ID</div>
   <div class="cd-field">
@@ -504,12 +504,12 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
       <span id="upi-copied">Copy</span>
     </button>
   </div>
-  <p class="cd-thanks">Thank you for using WOW ❤️</p>
+  <p class="cd-thanks">Thanks for keeping the pets fed 🐾</p>
 </dialog>
 
 <section id="faq" class="alt">
   <div class="wrap">
-    <div class="head"><div class="eyebrow">FAQ</div><h2>The short answers.</h2></div>
+    <div class="head"><div class="eyebrow">FAQ</div><h2>Questions people ask.</h2></div>
     <details><summary>Is WOW really free?</summary><p>Yes. No ads, no subscription, no paid tier.</p></details>
     <details><summary>Which Macs does it work on?</summary><p>Any Mac on macOS 13 Ventura or later, with Apple silicon or Intel.</p></details>
     <details><summary>Why does macOS say it can't verify WOW?</summary><p>Apple charges developers a yearly fee to "notarize" apps. WOW isn't notarized yet, so macOS shows a warning the first time. Allow it once in System Settings → Privacy &amp; Security → Open Anyway, and it opens normally after that.</p></details>
