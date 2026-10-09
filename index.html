@@ -140,7 +140,7 @@ section { padding: 96px 0; }
   transition: border-color .15s, transform .15s; font: inherit; color: inherit; }
 .pet-card:hover { transform: translateY(-3px); }
 .pet-card[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
-.pet-card .stage { position: relative; height: 120px; overflow: hidden; }
+.pet-card .stage { position: relative; height: 120px; }
 .pet-card .sprite { width: 180px; height: 150px; left: 50%; top: -14px; margin-left: -90px; transform: scale(.8); cursor: pointer; }
 .pet-card b { display: block; font: 700 18px "Bricolage Grotesque", sans-serif; }
 .pet-card span { font-size: 13px; color: var(--ink-2); }
@@ -327,7 +327,7 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
     <div class="caption">Click the pet to say hi · <button class="theme-btn" id="remind">Send a reminder</button> · <span id="glasses">0</span> glasses today</div>
 
     <div class="strip">
-      <div><b>9</b><span>3D pets</span></div>
+      <div><b>10</b><span>3D pets</span></div>
       <div><b>25</b><span>reminder characters</span></div>
       <div><b>₹0</b><span>free, forever</span></div>
       <div><b>0</b><span>accounts or tracking</span></div>
@@ -357,7 +357,7 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
   <div class="wrap">
     <div class="head">
       <div class="eyebrow">Choose your friend</div>
-      <h2>Nine pets. Pick one, name it.</h2>
+      <h2>Ten pets. Pick one, name it.</h2>
       <p>Every pet is a real 3D model with its own walk, run, happy dance and snack time. Tap one to put it on the demo desktop above.</p>
     </div>
     <div class="pets" id="pet-grid"></div>
@@ -440,8 +440,8 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
     <div class="release">
       <div>
         <span class="pill">Latest</span>
-        <h3>WOW 1.0</h3>
-        <p style="color:var(--ink-2);margin:6px 0 0">First public release · 10 October 2026 · macOS 13+</p>
+        <h3>WOW 1.1</h3>
+        <p style="color:var(--ink-2);margin:6px 0 0">New: a cat joins the pets · 10 October 2026 · macOS 13+</p>
       </div>
       <div class="ctas">
         <a class="btn" href="https://github.com/lalitpatel11/WOW-site/releases">All releases</a>
@@ -543,6 +543,7 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
 <script>
 const PETS = [
   { id: "shiba",  name: "Shiba",      note: "Loyal and bouncy",   walk: 12, happy: 16 },
+  { id: "cat",    name: "Cat",        note: "Blocky and cuddly",  walk: 12, happy: 8 },
   { id: "fox",    name: "Fox",        note: "Quick and curious",  walk: 12, happy: 16 },
   { id: "husky",  name: "Husky",      note: "Fluffy and loud",    walk: 12, happy: 16 },
   { id: "wolf",   name: "Wolf",       note: "Cool and calm",      walk: 12, happy: 16 },
