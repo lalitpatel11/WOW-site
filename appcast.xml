@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>WOW</title>
+    <link>https://lalitpatel11.github.io/WOW-site/</link>
+    <item>
+      <title>WOW 1.2</title>
+      <pubDate>Fri, 09 Oct 2026 20:19:12 +0000</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>1.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>WOW now updates itself. It checks once a day and asks before installing.</p>]]></description>
+      <enclosure url="https://github.com/lalitpatel11/WOW-site/releases/download/v1.2/WOW-1.2.dmg" type="application/octet-stream" sparkle:edSignature="Ap67MXcoTztXiXXzPdivI/UxwiqVd94vcg2gE5oYRHMUgvyJBgemghRE8mieZWlw/WUL67ky28PW0G+V+YgqAQ==" length="26627849" />
+    </item>
+  </channel>
+</rss>
