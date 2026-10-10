@@ -80,6 +80,17 @@ nav .btn { padding: 9px 16px; font-size: 14px; }
 .fine { font-size: 14px; color: var(--ink-2); margin-top: 16px; }
 .fine a { color: var(--ink-2); }
 
+/* Product Hunt badge */
+.ph-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; margin-bottom: 18px; border-radius: 99px;
+  border: 1px solid color-mix(in srgb, #da552f 45%, var(--line)); background: var(--card); text-decoration: none; text-align: left;
+  transition: transform .15s ease, box-shadow .15s ease; }
+.ph-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.ph-logo { width: 30px; height: 30px; border-radius: 50%; background: #da552f; color: #fff; display: grid; place-items: center;
+  font: 800 16px "Bricolage Grotesque", sans-serif; flex: none; }
+.ph-badge small { display: block; font-size: 11px; color: var(--ink-2); line-height: 1.2; }
+.ph-badge b { display: block; font-size: 14px; line-height: 1.3; }
+.hero .eyebrow { display: table; margin: 0 auto; }
+
 /* Desktop mockup */
 .desk {
   position: relative; margin: 56px auto 0; max-width: 1000px; height: 420px; border-radius: 22px;
@@ -302,6 +313,10 @@ footer nav, footer .links2 { display: flex; gap: 18px; flex-wrap: wrap; }
 
 <header class="hero">
   <div class="wrap">
+    <a class="ph-badge" href="https://www.producthunt.com/products/wow-2" target="_blank" rel="noopener">
+      <span class="ph-logo">P</span>
+      <span><small>Launching on Product Hunt</small><b>October 11 · Come say hi 🐾</b></span>
+    </a>
     <div class="eyebrow">Free for Mac · A tiny friend for your screen</div>
     <h1>Reminders that come <em>walking</em> to you.</h1>
     <p class="sub">WOW lives in your menu bar and keeps a little 3D pet on your desktop. When it's time to drink water, take your pills or rest your eyes, your pet brings the reminder right to your cursor.</p>
